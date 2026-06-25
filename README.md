@@ -5,14 +5,31 @@ Blog pessoal desenvolvido com **React + TypeScript + Vite**.
 ## Funcionalidades
 
 - Página inicial com boas-vindas
-- Botões para criar e visualizar postagens
+- Navbar com menu de navegação (Postagens, Temas, Cadastrar tema, Perfil, Sair)
+- Footer com direitos autorais dinâmicos e ícones de redes sociais
 
 ## Tecnologias
 
 - React 19
-- TypeScript
-- Vite
+- TypeScript 6
+- Vite 8
+- Tailwind CSS 4
+- Phosphor Icons
 - ESLint
+
+## Estrutura do Projeto
+
+```
+src/
+├── App.tsx
+├── index.css              (@import "tailwindcss")
+├── main.tsx
+├── components/
+│   ├── navbar/Navbar.tsx
+│   └── footer/Footer.tsx
+└── pages/
+    └── home/Home.tsx
+```
 
 ## Como executar
 
