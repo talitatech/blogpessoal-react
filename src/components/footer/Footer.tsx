@@ -1,6 +1,7 @@
 import { FacebookLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
 
 function Footer() {
+
   let data = new Date().getFullYear()
 
   return (
@@ -12,9 +13,27 @@ function Footer() {
           </p>
           <p className='text-lg'>Acesse nossas redes sociais</p>
           <div className='flex gap-2'>
-            <LinkedinLogo size={48} weight='bold' />
-            <InstagramLogo size={48} weight='bold' />
-            <FacebookLogo size={48} weight='bold' />
+            <a
+              href="https://www.linkedin.com/in/talita-santos-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedinLogo size={48} weight='bold' />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramLogo size={48} weight='bold' />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FacebookLogo size={48} weight='bold' />
+            </a>
           </div>
         </div>
       </div>
