@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { toast } from "react-toastify"
 import { AuthContext } from "../../../contexts/AuthContext"
 import type Tema from "../../../models/Tema"
 import { buscar, deletar } from "../../../services/Service"
@@ -34,7 +35,7 @@ function DeletarTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            toast.info('Você precisa estar logado!')
             navigate('/')
         }
     }, [token])
@@ -55,13 +56,13 @@ function DeletarTema() {
                 }
             })
 
-            alert('Tema deletado com sucesso')
+            toast.success('Tema deletado com sucesso!')
 
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o tema.')
+                toast.error('Erro ao deletar o tema.')
             }
         }
 

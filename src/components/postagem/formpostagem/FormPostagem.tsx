@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Postagem from "../../../models/Postagem";
 import type Tema from "../../../models/Tema";
@@ -16,7 +17,14 @@ function FormPostagem() {
 
     const [tema, setTema] = useState<Tema>({ id: 0, descricao: '', })
     
-    const [postagem, setPostagem] = useState<Postagem>({} as Postagem)
+    const [postagem, setPostagem] = useState<Postagem>({
+        id: 0,
+        titulo: '',
+        texto: '',
+        data: '',
+        tema: null,
+        usuario: null
+    })
 
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
@@ -61,7 +69,7 @@ function FormPostagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
+            toast.info('Você precisa estar logado!');
             navigate('/');
         }
     }, [token])
@@ -106,13 +114,13 @@ function FormPostagem() {
                     },
                 });
 
-                alert('Postagem atualizada com sucesso')
+                toast.success('Postagem atualizada com sucesso!')
 
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    alert('Erro ao atualizar a Postagem')
+                    toast.error('Erro ao atualizar a Postagem')
                 }
             }
 
@@ -124,13 +132,13 @@ function FormPostagem() {
                     },
                 })
 
-                alert('Postagem cadastrada com sucesso');
+                toast.success('Postagem cadastrada com sucesso!')
 
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    alert('Erro ao cadastrar a Postagem');
+                    toast.error('Erro ao cadastrar a Postagem')
                 }
             }
         }

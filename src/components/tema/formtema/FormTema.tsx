@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Tema from "../../../models/Tema";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
@@ -9,7 +10,10 @@ function FormTema() {
 
     const navigate = useNavigate();
 
-    const [tema, setTema] = useState<Tema>({} as Tema)
+    const [tema, setTema] = useState<Tema>({
+        id: 0,
+        descricao: ''
+    })
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -32,7 +36,7 @@ function FormTema() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
+            toast.info('Você precisa estar logado!')
             navigate('/')
         }
     }, [token])
@@ -63,12 +67,12 @@ function FormTema() {
                 await atualizar(`/temas`, tema, setTema, {
                     headers: { 'Authorization': token }
                 })
-                alert('O Tema foi atualizado com sucesso!')
+                toast.success('O Tema foi atualizado com sucesso!')
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout();
                 } else {
-                    alert('Erro ao atualizar o tema.')
+                    toast.error('Erro ao atualizar o tema.')
                 }
 
             }
@@ -77,12 +81,12 @@ function FormTema() {
                 await cadastrar(`/temas`, tema, setTema, {
                     headers: { 'Authorization': token }
                 })
-                alert('O Tema foi cadastrado com sucesso!')
+                toast.success('O Tema foi cadastrado com sucesso!')
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout();
                 } else {
-                    alert('Erro ao cadastrar o tema.')
+                    toast.error('Erro ao cadastrar o tema.')
                 }
 
             }

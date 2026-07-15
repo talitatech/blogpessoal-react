@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { toast } from "react-toastify"
 import { AuthContext } from "../../../contexts/AuthContext"
 import type Postagem from "../../../models/Postagem"
 import { buscar, deletar } from "../../../services/Service"
@@ -33,7 +34,7 @@ function DeletarPostagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            toast.info('Você precisa estar logado!')
             navigate('/')
         }
     }, [token])
@@ -54,13 +55,13 @@ function DeletarPostagem() {
                 }
             })
 
-            alert('Postagem apagada com sucesso')
+            toast.success('Postagem apagada com sucesso!')
 
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar a postagem.')
+                toast.error('Erro ao deletar a postagem.')
             }
         }
 
