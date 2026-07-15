@@ -2,6 +2,8 @@
 
 Blog pessoal desenvolvido com **React + TypeScript + Vite**, consumindo uma API REST Spring Boot.
 
+**Deploy:** https://blogpessoal-react-git-main-talita-santos.vercel.app/
+
 ## Funcionalidades
 
 - Autenticação de usuários (login e cadastro)
@@ -21,6 +23,7 @@ Blog pessoal desenvolvido com **React + TypeScript + Vite**, consumindo uma API 
 - Axios
 - Phosphor Icons
 - React Spinners
+- React Toastify
 - ESLint
 
 ## Estrutura do Projeto
@@ -38,7 +41,7 @@ src/
 │       ├── listapostagens/ListaPostagens.tsx
 │       ├── formpostagem/FormPostagem.tsx
 │       └── deletarpostagem/DeletarPostagem.tsx
-│   └── tema/
+│   ├── tema/
 │       ├── cardtema/CardTema.tsx
 │       ├── listatemas/ListaTemas.tsx
 │       ├── formtema/FormTema.tsx
@@ -53,7 +56,8 @@ src/
 ├── pages/
 │   ├── login/Login.tsx
 │   ├── cadastro/Cadastro.tsx
-│   └── home/Home.tsx
+│   ├── home/Home.tsx
+│   └── perfil/Perfil.tsx
 └── services/
     └── Service.ts
 ```
@@ -73,6 +77,7 @@ src/
 | `/cadastrarpostagem` | FormPostagem |
 | `/editarpostagem/:id` | FormPostagem |
 | `/deletarpostagem/:id` | DeletarPostagem |
+| `/perfil` | Perfil |
 
 ## Endpoints da API
 
